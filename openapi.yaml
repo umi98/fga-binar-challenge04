@@ -2,6 +2,8 @@ openapi: 3.0.3
 info:
   title: Simple Banking System
   description: |-
+    List of APIs on Simple Banking System, but only users and authentication.
+    The rest of APIs will be added later.
   version: 1.0.0
 servers:
   - url: http://localhost:3000
@@ -37,7 +39,7 @@ paths:
         '405':
           description: Invalid input
       security:
-        - petstore_auth:
+        - auth:
             - write:users
             - read:users
     get:
@@ -57,7 +59,7 @@ paths:
         '400':
           description: Invalid status value
       security:
-        - petstore_auth:
+        - auth:
             - write:users
             - read:users
   
@@ -88,7 +90,7 @@ paths:
           description: User not found
       security:
         - api_key: []
-        - petstore_auth:
+        - auth:
             - write:users
             - read:users
     put:
@@ -139,7 +141,7 @@ paths:
         '405':
           description: Invalid input
       security:
-        - petstore_auth:
+        - auth:
             - write:pets
             - read:pets
     delete:
@@ -165,76 +167,20 @@ paths:
         '400':
           description: Invalid user value
       security:
-        - petstore_auth:
+        - auth:
             - write:pets
             - read:pets
 
-  /user:
-    post:
-      tags:
-        - user
-      summary: Create user
-      description: This can only be done by the logged in user.
-      operationId: createUser
-      requestBody:
-        description: Created user object
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/User'
-          application/xml:
-            schema:
-              $ref: '#/components/schemas/User'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/User'
-      responses:
-        default:
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/User'
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/User'
-  /user/createWithList:
-    post:
-      tags:
-        - user
-      summary: Creates list of users with given input array
-      description: Creates list of users with given input array
-      operationId: createUsersWithListInput
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: array
-              items:
-                $ref: '#/components/schemas/User'
-      responses:
-        '200':
-          description: Successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/User'          
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/User'
-        default:
-          description: successful operation
-  /user/login:
+  /auth/login:
     get:
       tags:
-        - user
-      summary: Logs user into the system
+        - auth
+      summary: Sign in form into the system
       description: ''
-      operationId: loginUser
       parameters:
-        - name: username
+        - name: email
           in: query
-          description: The user name for login
+          description: The email for login
           required: false
           schema:
             type: string
@@ -259,42 +205,26 @@ paths:
                 type: string
                 format: date-time
           content:
-            application/xml:
-              schema:
-                type: string
             application/json:
               schema:
                 type: string
         '400':
           description: Invalid username/password supplied
-  /user/logout:
-    get:
+    post:
       tags:
-        - user
-      summary: Logs out current logged in user session
-      description: ''
-      operationId: logoutUser
-      parameters: []
-      responses:
-        default:
-          description: successful operation
-  /user/{username}:
-    get:
-      tags:
-        - user
-      summary: Get user by user name
-      description: ''
-      operationId: getUserByName
-      parameters:
-        - name: username
-          in: path
-          description: 'The name that needs to be fetched. Use user1 for testing. '
-          required: true
-          schema:
-            type: string
+        - auth
+      summary: Sign in to system
+      description: Sign in
+      requestBody:
+        description: Sign in
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
       responses:
         '200':
-          description: successful operation
+          description: Successful operation
           content:
             application/json:
               schema:
@@ -302,52 +232,116 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/User'
-        '400':
-          description: Invalid username supplied
-        '404':
-          description: User not found
-    put:
+        '405':
+          description: Invalid input
+      security:
+        - auth:
+            - write:users
+            - read:users
+  /auth/register:
+    get:
       tags:
-        - user
-      summary: Update user
-      description: This can only be done by the logged in user.
-      operationId: updateUser
+        - auth
+      summary: Sign up form into the system
+      description: ''
       parameters:
-        - name: username
-          in: path
-          description: name that need to be deleted
-          required: true
+        - name: name
+          in: query
+          description: Name to register
+          required: false
           schema:
             type: string
+        - name: email
+          in: query
+          description: The email to sign up
+          required: false
+          schema:
+            type: string
+        - name: password
+          in: query
+          description: The password to sign up clear text
+          required: false
+          schema:
+            type: string
+        - name: identity_type
+          in: query
+          description: The identity type to sign up
+          required: false
+          schema:
+            type: string
+        - name: identity_number
+          in: query
+          description: The identity number to sign up
+          required: false
+          schema:
+            type: string
+        - name: address
+          in: query
+          description: The user's address to sign up
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              description: date in UTC when token expires
+              schema:
+                type: string
+                format: date-time
+          content:
+            application/json:
+              schema:
+                type: string
+        '400':
+          description: Invalid username/password supplied
+    post:
+      tags:
+        - auth
+      summary: Add a new user with profile
+      description: Add a new users and write more about profile
       requestBody:
-        description: Update an existent user in the store
+        description: Add a new users and write more about profile
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/User'
-          application/xml:
-            schema:
-              $ref: '#/components/schemas/User'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/User'
+        required: true
       responses:
-        default:
-          description: successful operation
-    delete:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/User'
+        '405':
+          description: Invalid input
+      security:
+        - auth:
+            - write:users
+            - read:users
+  /auth/whoami:
+    get:
       tags:
-        - user
-      summary: Delete user
-      description: This can only be done by the logged in user.
-      operationId: deleteUser
-      parameters:
-        - name: username
-          in: path
-          description: The name that needs to be deleted
-          required: true
-          schema:
-            type: string
+        - auth
+      summary: Get user data using token
+      description: ''
       responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
         '400':
           description: Invalid username supplied
         '404':
@@ -410,14 +404,14 @@ components:
             items:
               $ref: '#/components/schemas/User'
   securitySchemes:
-    petstore_auth:
+    auth:
       type: oauth2
       flows:
         implicit:
-          authorizationUrl: https://petstore3.swagger.io/oauth/authorize
+          authorizationUrl: http://localhost:3000/whoami
           scopes:
-            write:pets: modify pets in your account
-            read:pets: read your pets
+            write:pets: modify users
+            read:pets: read users
     api_key:
       type: apiKey
       name: api_key
