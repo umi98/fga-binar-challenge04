@@ -514,10 +514,7 @@
         },
         "security": [
           {
-            "auth": [
-              "write:users",
-              "read:users"
-            ]
+            "auth": []
           }
         ]
       }
@@ -618,16 +615,9 @@
     },
     "securitySchemes": {
       "auth": {
-        "type": "oauth2",
-        "flows": {
-          "implicit": {
-            "authorizationUrl": "http://localhost:3000/whoami",
-            "scopes": {
-              "write:pets": "modify users",
-              "read:pets": "read users"
-            }
-          }
-        }
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
       },
       "api_key": {
         "type": "apiKey",

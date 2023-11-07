@@ -326,9 +326,7 @@ paths:
         '405':
           description: Invalid input
       security:
-        - auth:
-            - write:users
-            - read:users
+        - auth: []
   /auth/whoami:
     get:
       tags:
@@ -346,6 +344,8 @@ paths:
           description: Invalid username supplied
         '404':
           description: User not found
+      # security:
+      # - auth: []
 components:
   schemas:
     User:
@@ -405,13 +405,9 @@ components:
               $ref: '#/components/schemas/User'
   securitySchemes:
     auth:
-      type: oauth2
-      flows:
-        implicit:
-          authorizationUrl: http://localhost:3000/whoami
-          scopes:
-            write:pets: modify users
-            read:pets: read users
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
     api_key:
       type: apiKey
       name: api_key
