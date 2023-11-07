@@ -25,7 +25,7 @@ module.exports = {
             }
         });
 
-        res.status(201).json({ 
+        res.status(200).json({ 
             status: 'success', 
             code: 200, 
             message: 'Data Transaction:',
@@ -84,7 +84,7 @@ module.exports = {
             }
         })
 
-        res.status(201).json({ 
+        res.status(200).json({ 
             status: 'success', 
             code: 200, 
             message: 'Data diubah!',
@@ -101,7 +101,7 @@ module.exports = {
 
         res.status(201).json({ 
             status: 'success', 
-            code: 200, 
+            code: 201, 
             message: 'Data dihapus!'
         })
     }

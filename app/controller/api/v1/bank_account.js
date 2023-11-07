@@ -4,12 +4,23 @@ const prisma = new PrismaClient();
 
 module.exports = {
     async get(req, res) {
+        const { search, page = 1, limit = 10} = req.query;
         let bankAccounts = await prisma.bankAccount.findMany({
+            skip: (page - 1) * limit,
+            take: limit,
             orderBy: {
                 id: 'asc'
             }
         });
 
+        if (!bankAccounts.length) {
+            return res.status(200).json({
+                status: 'success', 
+                code: 200, 
+                message: 'Data empty',
+                data: bankAccounts
+            })
+        }
         res.status(200).json({ 
             status: 'success', 
             code: 200, 
@@ -25,7 +36,7 @@ module.exports = {
             }
         });
 
-        res.status(201).json({ 
+        res.status(200).json({ 
             status: 'success', 
             code: 200, 
             message: 'Data Bank Account:',
@@ -64,7 +75,7 @@ module.exports = {
             }
         })
 
-        res.status(201).json({ 
+        res.status(200).json({ 
             status: 'success', 
             code: 200, 
             message: 'Data diubah!',

@@ -4,20 +4,26 @@ const prisma = new PrismaClient();
 
 module.exports = {
     async get(req, res) {
-        // let users = await prisma.user.findMany({
-        //     orderBy: {
-        //         id: 'asc'
-        //     }
-        // });
+        const { search, page = 1, limit = 10} = req.query;
         let users = await prisma.user.findMany({
             include: {
                 profile: true 
             },
+            skip: (page - 1) * limit,
+            take: limit,
             orderBy: {
                 id: 'asc'
             }
         });
 
+        if (!users.length) {
+            return res.status(200).json({
+                status: 'success', 
+                code: 200, 
+                message: 'Data empty',
+                data: users
+            })
+        }
         res.status(200).json({ 
             status: 'success', 
             code: 200, 
@@ -41,7 +47,7 @@ module.exports = {
             }
         });
 
-        res.status(201).json({ 
+        res.status(200).json({ 
             status: 'success', 
             code: 200, 
             message: 'Data user:',
@@ -86,6 +92,22 @@ module.exports = {
         //     },
         //     data: req.body
         // })
+        let check = await prisma.user.findUnique({
+            include: {
+                profile: true 
+            },
+            where: {
+                id: Number(req.params.id)
+            }
+        })
+        if (!check.length) {
+            return res.status(401).json({ 
+                status: 'failed', 
+                code: 401, 
+                message: 'Data not found!'
+            })
+        }
+
         let user = await prisma.user.update({
             where: {
                 id: Number(req.params.id)
@@ -109,7 +131,7 @@ module.exports = {
             }
         })
 
-        res.status(201).json({ 
+        res.status(200).json({ 
             status: 'success', 
             code: 200, 
             message: 'Data diubah!',
@@ -118,6 +140,27 @@ module.exports = {
     },
 
     async destroy(req, res) {
+        let check = await prisma.user.findUnique({
+            include: {
+                profile: true 
+            },
+            where: {
+                id: Number(req.params.id)
+            }
+        })
+        if (!check.length) {
+            return res.status(401).json({ 
+                status: 'failed', 
+                code: 401, 
+                message: 'Data not found!'
+            })
+        }
+        
+        let profile = await prisma.profile.delete({
+            where: {
+                user_id: Number(req.params.id)
+            }
+        })
         let user = await prisma.user.delete({
             where: {
                 id: Number(req.params.id)
