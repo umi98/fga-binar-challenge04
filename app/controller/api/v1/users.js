@@ -1,6 +1,7 @@
 const { PrismaClient } = require('@prisma/client')
 
 const prisma = new PrismaClient();
+const imagekit = require('../../../../utils/imagekit');
 
 module.exports = {
     async get(req, res) {
@@ -68,7 +69,8 @@ module.exports = {
                     create: {
                         identity_type: req.body.identity_type,
                         identity_number: req.body.identity_number,
-                        address: req.body.address
+                        address: req.body.address,
+                        image: "https://ik.imagekit.io/umi98dev/def-avatar_rV2tWZAPd.png"
                     }
                 }
             },
@@ -172,5 +174,32 @@ module.exports = {
             code: 200, 
             message: 'Data dihapus!'
         })
+    },
+
+    async updateImage(req, res) {
+        try {
+            const stringFile = req.file.buffer.toString('base64');
+            const uploadFile = await imagekit.upload({
+                fileName: req.file.originalname,
+                file: stringFile
+            })
+
+            let user = await prisma.profile.update({
+                where: {
+                    user_id: Number(req.params.id)
+                },
+                data: {
+                    image: uploadFile.url
+                }
+            })
+
+            res.status(200).json({
+                status: 'OK',
+                message: 'Berhasil',
+                data: user
+            })
+        } catch(err) {
+            throw err;
+        }
     }
 }

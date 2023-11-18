@@ -1,11 +1,17 @@
 const express = require('express');
 const router = express.Router();
 const controller = require('../app/controller');
+const multer = require('multer')();
 
-router.get('/v1/users', controller.users.get);
-router.get('/v1/users/:id', controller.users.getById);
-router.post('/v1/users', controller.users.insert);
-router.put('/v1/users/:id', controller.users.update);
-router.delete('/v1/users/:id', controller.users.destroy);
+router.get('/api/v1/users', controller.users.get);
+router.get('/api/v1/users/:id', controller.users.getById);
+router.post('/api/v1/users', controller.users.insert);
+router.put('/api/v1/users/:id', controller.users.update);
+// router.put('/api/v1/users/changeimage/:id', controller.users.updateImage);
+router.delete('/api/v1/users/:id', controller.users.destroy);
+
+router.put('/api/v1/users/changeimage/:id',
+        multer.single('image'),
+        controller.users.updateImage);
 
 module.exports = router;

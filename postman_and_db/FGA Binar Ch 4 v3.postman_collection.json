@@ -1,0 +1,962 @@
+{
+	"info": {
+		"_postman_id": "156ac90e-211f-4d7f-b8ea-1ae02457618d",
+		"name": "FGA Binar Ch 4",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1442816"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get all users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add new user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"dipsy\",\r\n    \"email\": \"dipsy@mail\",\r\n    \"password\": \"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/users/36",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"36"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update user",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"badi\",\r\n    \"email\": \"badi@mail\",\r\n    \"password\": \"23\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/users/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bank Accounts",
+			"item": [
+				{
+					"name": "Get all accs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/bank_account",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"bank_account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get accs by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/bank_account/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"bank_account",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add new acc",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\": 2,\r\n    \"bank_name\": \"simpedes\",\r\n    \"bank_account_number\": 12346,\r\n    \"balance\": 80000000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/bank_account",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"bank_account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete acc",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/users/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update acc",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\": 1,\r\n    \"bank_name\": \"simpedes\",\r\n    \"bank_account_number\": 12389,\r\n    \"balance\": 10000000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/bank_account/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"bank_account",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Profile",
+			"item": [
+				{
+					"name": "Get all profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/profiles",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"profiles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add new profile",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\": 1,\r\n    \"identity_type\": \"ktp\",\r\n    \"identity_number\": \"1234567890\",\r\n    \"address\": \"Jawa timur\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/profiles",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"profiles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete profiles",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/profiles/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"profiles",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update profiles",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\": 1,\r\n    \"identity_type\": \"sim\",\r\n    \"identity_number\": \"1234567899\",\r\n    \"address\": \"Jawa Barat\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/profiles/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"profiles",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transaction",
+			"item": [
+				{
+					"name": "Get all transaction",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/transactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"transactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get transaction by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/transactions/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"transactions",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add new transaction",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"source_account_id\": 1,\r\n    \"destination_account_id\": 2,\r\n    \"amount\": 500000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/transactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"transactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete transactions",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/transactions/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"transactions",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update transaction",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"source_account_id\": 1,\r\n    \"destination_account_id\": 2,\r\n    \"amount\" : 20000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/transactions/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"transactions",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get users with profile",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add new user with profile",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"tinky winky\",\r\n    \"email\": \"tinky@mail\",\r\n    \"password\": \"876\",\r\n    \"identity_type\": \"sim\",\r\n    \"identity_number\": \"900011\",\r\n    \"address\": \"Tele hill\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update new user with profile",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"dipss\",\r\n    \"email\": \"dips@mail\",\r\n    \"password\": \"900000\",\r\n    \"identity_type\": \"ktp\",\r\n    \"identity_number\": \"90001190\",\r\n    \"address\": \"Tele hills\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/users/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Withdraw balance",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"amount\": 10000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/withdraw/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"withdraw",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deposit balance",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"amount\": 100000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/deposit/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"deposit",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NzMsIm5hbWUiOiJidWRpIiwiZW1haWwiOiJidWRpQHlhaG9vLmNvbSIsImlhdCI6MTY5OTM3MjkwNiwiZXhwIjoxNjk5Mzc2NTA2fQ.M9Qq1ijyY6KpS6SKYbjjoFASAsHShVL4KIueZyAi9B8",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"budi@yahoo.com\",\r\n    \"password\": \"123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "See data using token",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NzMsIm5hbWUiOiJidWRpIiwiZW1haWwiOiJidWRpQHlhaG9vLmNvbSIsImlhdCI6MTY5OTM3NTE4MiwiZXhwIjoxNjk5Mzc4NzgyfQ.g1PC3T0wFR-lnD2yoZk71K3m3a5gZWp3Ffd7GOZ6T3E",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/auth/whoami",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"whoami"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload media",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/D:/FGA BE Binar/Tugas/complain2.png"
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/D:/FGA BE Binar/Jadwal dan lainnya/FASIL RESOURCE [FGA 2023 Batch 4] BE JS Student Milestone - BE JS Student Milestone.pdf",
+							"disabled": true
+						},
+						{
+							"key": "video",
+							"type": "file",
+							"src": [],
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/upload/image",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"upload",
+						"image"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload file",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/D:/FGA BE Binar/Tugas/complain2.png",
+							"disabled": true
+						},
+						{
+							"key": "doc",
+							"type": "file",
+							"src": "/D:/FGA BE Binar/Jadwal dan lainnya/FASIL RESOURCE [FGA 2023 Batch 4] BE JS Student Milestone - BE JS Student Milestone.pdf"
+						},
+						{
+							"key": "video",
+							"type": "file",
+							"src": [],
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/upload/file",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"upload",
+						"file"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "QR Code",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"url\": \"https://classroom.google.com/c/NjIyNjE5MzY4MDIw/m/NjIyNjIxNzI5OTUx/details\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/qrcode",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"qrcode"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload to imagekit",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/D:/FGA BE Binar/Tugas/def-avatar.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/upload/imagekit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"upload",
+						"imagekit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update user image",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/D:/FGA BE Binar/Tugas/test-avatar.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/users/changeimage/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"changeimage",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "update user image result",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/D:/FGA BE Binar/Tugas/test-avatar.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/users/changeimage/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"changeimage",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "203"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"cb-qCyJhdp37WyxTYYoJoTJMGuIeIs\""
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "connect.sid=s%3AdYdjNqaqppX2TQtXPZzJ8FDr1RX2l1Z1.8kFpgvvmRV3kAt4cImF9j7xjxKpgM9dT%2FfQdAF4YKog; Path=/; HttpOnly"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 18 Nov 2023 13:16:50 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"OK\",\n    \"message\": \"Berhasil\",\n    \"data\": {\n        \"id\": 1,\n        \"user_id\": 1,\n        \"identity_type\": \"sim\",\n        \"identity_number\": \"900011\",\n        \"address\": \"Tele hill\",\n        \"image\": \"https://ik.imagekit.io/umi98dev/test-avatar_-UdWMkNTp.png\"\n    }\n}"
+				}
+			]
+		}
+	]
+}

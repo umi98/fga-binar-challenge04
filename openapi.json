@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "https://helpful-gold-turkey.cyclic.app"
+      "url": "https://helpful-gold-turkey.cyclic.app/api/v1/"
     }
   ],
   "tags": [

@@ -27,7 +27,8 @@ module.exports = {
                     create: {
                         identity_type: req.body.identity_type,
                         identity_number: req.body.identity_number,
-                        address: req.body.address
+                        address: req.body.address,
+                        image: "https://ik.imagekit.io/umi98dev/def-avatar_rV2tWZAPd.png"
                     }
                 }
             }
@@ -102,7 +103,8 @@ module.exports = {
                         create: {
                             identity_type: req.body.identity_type,
                             identity_number: req.body.identity_number,
-                            address: req.body.address
+                            address: req.body.address,
+                            iamge: "https://ik.imagekit.io/umi98dev/def-avatar_rV2tWZAPd.png"
                         }
                     }                
                 }
