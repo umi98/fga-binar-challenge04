@@ -39,6 +39,7 @@ model Profile {
   identity_type String
   identity_number String
   address String
+  iamge String
 }
 
 model Transaction {
